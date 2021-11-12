@@ -1,0 +1,76 @@
+/*THEME-DARK*/
+.form-control:disabled{
+  background-color: #56595C;
+  color: #d1d2d3 !important;
+}
+body, .react-datepicker__input-container input {
+  background-color: #202020 !important;
+  color: #d1d2d3 !important;
+} 
+.dropdown {
+  background-color: var(--bg) !important;
+}
+.navbar {
+  background-color: #202020 !important;
+  background: none;
+  border-bottom: 1px solid #3b3a3a !important;
+}
+.icon-button {  
+  background-color: #56595C !important;
+}
+.card, .form-control, .react-datepicker__input-container input {
+  border: 1px solid #3b3a3a !important;
+}
+.card-body, .css-1n7v3ny-option {
+  background-color: #262525 !important;
+}
+.list-group-item, .card, .card-header, .modalContainer {
+  background-color: #262525 !important;
+  border: 1px solid #3b3a3a !important;
+  color: #d1d2d3 !important;
+}
+.form-control:enabled{
+  background-color: #262525 !important;
+  color: #d1d2d3 !important;
+}
+.pagination>.disabled>a, .page:not(.active)>a, .pagination>.next>a,
+.pagination>.last>a, .pagination>.pageNumbers>a, .pagination>.prev>a, .pagination>.first>a,
+.css-2b097c-container>div
+{
+  background-color: #262525 !important;
+  color: #d1d2d3 !important;
+  border: 1px solid #3b3a3a !important;
+}
+.css-2b097c-container>div>div>div , .titleCloseBtn button {
+  color: #d1d2d3 !important;
+}
+.css-2b097c-container>div:nth-child(3)>div>div:hover{
+  background-color: #676B6E !important ;
+}
+.css-1n7v3ny-option{
+  background-color: #676B6E !important ;
+}
+.btn-light{
+  background-color: #676B6E !important;
+  border-color: #676B6E !important;
+  color: #d1d2d3 !important;
+}
+.btn-light:hover, .form-group a:hover {
+  filter: brightness(1.2);
+  color: var(--text-color);
+}
+.container .nav-tabs{
+  border-color: #676B6E;
+}
+.container .nav-tabs a{
+  color: #dadce1;
+  border-color: #676B6E;
+}
+.container .nav-tabs .nav-link.active {
+  background-color: #676B6E;
+  color: #dadce1;
+  border-color: #676B6E;
+}
+.container .nav-tabs a:hover, .form-group a, .form-group .aforgot{
+  color: #dadce1;
+}
