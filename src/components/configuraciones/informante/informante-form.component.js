@@ -23,6 +23,8 @@ export default class InformanteForm extends Component{
     //Actualizar Datos
     actualizarDatos = () =>{
         if(this.state.idUpdate !== this.props.idUpdate ){
+            //Enfocar el input
+            this._inputInformante.focus(); 
             this.setState({ idUpdate: this.props.idUpdate});
             if(this.props.idUpdate !== "NEW" && this.props.idUpdate !== "" ){
                 axios.get(configData.serverUrl + "/informante/"+this.props.idUpdate)
@@ -38,6 +40,9 @@ export default class InformanteForm extends Component{
                 })
                 .catch(err => console.log(err));
             }else{
+                //Enfocar el input
+                this._inputInformante.focus(); 
+
                 this.setState({
                     ruc:'',
                     div:'',
@@ -53,12 +58,12 @@ export default class InformanteForm extends Component{
 
     //Metodo que obtiene cualquier actualizacion de otros componentes donde fue llamado
     componentDidUpdate(){    
-        this.actualizarDatos()
+        this.actualizarDatos();        
     }
 
     //Metodo que se ejecuta antes del render
     componentDidMount(){
-        this.actualizarDatos()
+        this.actualizarDatos();
     }
 
     onChangeRazonSocial = (e) => {

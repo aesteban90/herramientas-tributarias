@@ -375,7 +375,7 @@ export default class FormularioIngreso extends Component{
             <div className="container">
                 {this.state.modalOpen && <Modal setOpenModal={this.setOpenModal} title={this.state.modalTitle} body={this.state.modalBody} actionConfirmModal={this.actionConfirmModal} actionString={this.state.modalAction} />}
                 <form id="formIngreso" onSubmit={this.onSubtmit}>
-                    <div className="row col-md-12">
+                    <div className="row col-sm-12">
                         <div className="col-md-6">
                             <h3>Formulario Ingreso</h3>
                         </div>
@@ -392,7 +392,7 @@ export default class FormularioIngreso extends Component{
                             </div>
                         </div>
                     </div>                   
-                    <div className="row col-md-12">
+                    <div className="row ml-1">
                         <div className="row col-md-12">
                             <div className="form-group col-md-3" >
                                 <label>Tipo Identificacion: </label><br/>

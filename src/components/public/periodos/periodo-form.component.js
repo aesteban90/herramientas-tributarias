@@ -62,7 +62,7 @@ export default class PeriodoForm extends Component{
             <div>                
                 <form onSubmit={this.onSubtmit}>
                     <div className="row">
-                        <div className="form-group col-md-5">
+                        <div className="form-group col-5">
                             <label>Periodo: </label>
                             <NumberFormat                                 
                                 autoFocus={true}       
@@ -75,7 +75,7 @@ export default class PeriodoForm extends Component{
                                 onChange={this.onChangePeriodo}
                             />
                         </div>                                                    
-                        <div className="col-md-1 align-button-periodo">
+                        <div className="col-1 align-button-periodo">
                             <button type="submit" className="btn btn-success btn-sm mr-1">
                                 <FontAwesomeIcon icon={faPlus}  />  
                             </button>                 

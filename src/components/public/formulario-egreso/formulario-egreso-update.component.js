@@ -443,7 +443,7 @@ export default class FormularioEgreso extends Component{
                             </div>
                         </div>
                     </div>                   
-                    <div className="row col-md-12">
+                    <div className="row ml-1">
                         <div className="row col-md-12">
                             <div className="form-group col-md-3" >
                                 <label>Tipo Identificacion: </label><br/>

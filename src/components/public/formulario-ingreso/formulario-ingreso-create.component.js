@@ -382,24 +382,24 @@ export default class FormularioIngreso extends Component{
             <div className="container">
                 {this.state.modalOpen && <Modal setOpenModal={this.setOpenModal} title={this.state.modalTitle} body={this.state.modalBody} actionConfirmModal={this.actionConfirmModal} actionString={this.state.modalAction} />}
                 <form id="formIngreso" onSubmit={this.onSubtmit}>
-                    <div className="row col-md-12">
-                        <div className="col-md-6">
+                    <div className="row ml-1 col-sm-12">
+                        <div className="col-sm-4 title-form">
                             <h3>Formulario Ingreso</h3>
                         </div>
-                        <div className="row col-md-6 text-right">
-                            <div className="form-group text-center col-md-9">
+                        <div className="row col-sm-8 text-right">
+                            <div className="form-group text-center col-sm-9">
                                 <div className="msgactivacion alert alert-warning d-none" role="alert">
                                     {this.state.message}
                                 </div>
                             </div>
-                            <div className="form-group col-md-3">
+                            <div className="col-sm-3">
                                 <button type="button" onClick={this.buttonGuardar}  className="btn btn-primary ml-1" >Guardar</button>
                                 <button type="submit" id="btnsubmit" className="submit d-none" ></button>
                                 <button type="button" onClick={this.buttonSalir}  className="btn btn-light ml-1" >Salir</button>
                             </div>
                         </div>
                     </div>                   
-                    <div className="row col-md-12">
+                    <div className="row ml-1">
                         <div className="row col-md-12">
                             <div className="form-group col-md-3" >
                                 <label>Tipo Identificacion: </label><br/>

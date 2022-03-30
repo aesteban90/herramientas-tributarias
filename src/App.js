@@ -82,7 +82,10 @@ export default function App() {
                 <DropdownMenuPublic />
               </NavItemPublic>
             </NavbarPublic>
-            
+            <div className='nav-item-informante-mobile mt-2 col-12'>
+                  <a href="/informante"><b>Informante: </b><span></span></a>                  
+              </div>
+
             <Route path="/verify/:token" exact component={VerifyAccount} />    
             <Route path="/" exact component={Dashboard} />
             <Route path="/informante" exact component={InformanteList} />      
@@ -117,6 +120,9 @@ export default function App() {
                 </NavItem>
               </Navbar>
 
+              <div className='nav-item-informante-mobile mt-2 col-12'>
+                  <a href="/informante"><b>Informante: </b><span></span></a>                  
+              </div>
               <Route path="/" exact component={Dashboard} />
               <Route path="/usuarios" exact component={UserList} />      
               <Route path="/usuarios/create" exact component={UserCreate} />
@@ -156,7 +162,8 @@ function getInformante(){
     .then(response => {
       let informante_selected = response.data.ruc +"-"+response.data.div+" | "+ response.data.razonSocial;
       informante_selected += (response.data.periodo ? " | " + response.data.periodo : "");
-      document.querySelector('.nav-item-informante span').innerText = informante_selected; 
+      document.querySelector('.nav-item-informante span').innerText = informante_selected;
+      document.querySelector('.nav-item-informante-mobile span').innerText = informante_selected; 
       UserLogueado.ruc = response.data.rucID;      
     })
     .catch(err => console.log(err))

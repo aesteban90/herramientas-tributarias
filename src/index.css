@@ -116,10 +116,55 @@ li a{
   align-items: center;
   justify-content: center;  
 }
-.nav-item-logo{
-  position: absolute;
-  left: 1%;
+@media screen and (max-width: 800px) {
+  .nav-item-informante {
+    display: none !important;
+  }
+  .icon-logo{
+    width: 60% !important;
+    font-size: 15px !important;
+  }  
+  .nav-tabs .nav-link{
+    width: 130px !important;
+  }
+  .informante-check{
+    width: 80px;
+  }
+  .title-table-mobile, .datos-table-mobile, .nav-item-informante-mobile{
+    display: block;
+  }
+  .title-form{
+    width: 100% !important;
+  }
+  .title-table-desktop, .datos-table-desktop, .btn-createform-desktop{
+    display: none;
+  }
 }
+@media screen and (min-width: 800px) {
+  .title-table-mobile, .datos-table-mobile, .nav-item-informante-mobile, .btn-createform-mobile{
+    display: none;
+  }
+  
+  .title-table-desktop{
+    display: block;
+  }
+  .datos-table-desktop{
+    display: contents;
+  }
+}
+.nav-item-informante-mobile{
+  border-bottom: 1px solid;
+}
+.nav-item-informante-mobile a{
+  color: black;
+  text-decoration: none;
+}
+.nav-item-logo {
+   position: absolute;
+   left: 1%;
+}  
+
+
 .nav-item-informante{
   align-items: center;
   display: flex;
@@ -157,7 +202,7 @@ li a{
   width: 100%;
   height: 40px;
   padding: 5px;
-  margin: 2px;
+  margin: 10px;
   margin-right: 6px;
   display: flex;
   align-items: center;
@@ -167,7 +212,7 @@ li a{
   text-transform: uppercase;
 }
 .icon-logo > img {
-  width: 30px;
+  width: 40px;
   margin-right: 10px;
 }
 .icon-logo:hover{

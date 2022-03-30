@@ -149,14 +149,26 @@ export default class InformanteList extends Component{
                     <div className="col-md-2 informante-check">
                         <SwitchList nameToggle="informanteToggle" idToggle={"t_"+dato._id} onToggle={() => this.onChangeCheckList(dato,index)} />                        
                     </div>
-                    <div className="col-md-3">{dato.ruc.ruc +"-"+dato.ruc.div + periodo}</div>
-                    <div className="col-md-4">{dato.ruc.razonSocial}</div>
-                    <div className="col-md-3 text-right">
-                        <button onClick={() => this.updateData(dato)} type="button" className="btn btn-light btn-sm mr-1">Editar</button>
-                        <button onClick={() => this.deleteData(dato)} type="button" className="btn btn-danger btn-sm">Eliminar</button>
-                        <br/><br/>
-                        <button onClick={() => this.onChangeFormPeriodo(dato)} type="button" className="btn btn-light btn-sm mr-1">Periodos</button>
-                        <button onClick={() => this.onChangeFormTimbrado(dato)} type="button" className="btn btn-light btn-sm">Timbrados</button>
+                    <div className="datos-table-desktop">
+                        <div className="col-md-3">{dato.ruc.ruc +"-"+dato.ruc.div + periodo}</div>
+                        <div className="col-md-4">{dato.ruc.razonSocial}</div>
+                        <div className="col-md-3 text-right">
+                            <button onClick={() => this.updateData(dato)} type="button" className="btn btn-light btn-sm mr-1">Editar</button>
+                            <button onClick={() => this.deleteData(dato)} type="button" className="btn btn-danger btn-sm">Eliminar</button>
+                            <br/><br/>
+                            <button onClick={() => this.onChangeFormPeriodo(dato)} type="button" className="btn btn-light btn-sm mr-1">Periodos</button>
+                            <button onClick={() => this.onChangeFormTimbrado(dato)} type="button" className="btn btn-light btn-sm">Timbrados</button>
+                        </div>
+                    </div>
+                    <div className="datos-table-mobile">
+                        <div className="col-md-12"><b>Ruc: </b>{dato.ruc.ruc +"-"+dato.ruc.div + periodo}</div>
+                        <div className="col-md-12"><b>Razon: </b>{dato.ruc.razonSocial}</div>
+                        <div className="row col-sm-12">
+                            <button onClick={() => this.updateData(dato)} type="button" className="btn btn-light btn-sm mr-1 mb-1">Editar</button>
+                            <button onClick={() => this.deleteData(dato)} type="button" className="btn btn-danger btn-sm mb-1">Eliminar</button>
+                            <button onClick={() => this.onChangeFormPeriodo(dato)} type="button" className="btn btn-light btn-sm mr-1 mb-1">Periodos</button>
+                            <button onClick={() => this.onChangeFormTimbrado(dato)} type="button" className="btn btn-light btn-sm">Timbrados</button>
+                        </div>
                     </div>
                 </li>)
         })
@@ -172,7 +184,7 @@ export default class InformanteList extends Component{
                 <div className="row">
                     <div className="col-md-8">
                         <div className="card">
-                            <div className="card-header">
+                            <div className="card-header title-table-desktop">
                                 <div className="card-title row mb-0">  
                                     <div className="col-md-2">Activar</div>
                                     <div className="col-md-3">Ruc | Periodo</div>
@@ -180,6 +192,14 @@ export default class InformanteList extends Component{
                                     <div className="col-md-2 text-right">
                                         <button onClick={() => this.createData("NEW")} type="button" className="btn btn-success btn-sm">Nuevo</button>
                                     </div>                                 
+                                </div>
+                            </div>
+                            <div className="card-header title-table-mobile">
+                                <div className="card-title row mb-0"> 
+                                    <div className="col-5">Resumen</div>
+                                    <div className="col-7 text-right btn-createform-mobile">
+                                    <button onClick={() => this.createData("NEW")} type="button" className="btn btn-success btn-sm">Nuevo</button>
+                                    </div>  
                                 </div>
                             </div>
                             <input id="input-search" className="form-control" type="search" placeholder="Busqueda (minimo 3 letras)..." />
