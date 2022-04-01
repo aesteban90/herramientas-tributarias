@@ -43,17 +43,6 @@ export default class RegimenMatrimonialList extends Component{
     componentDidUpdate(){}
 
     deleteData = async (jsondatos) => {
-        await axios.delete(configData.serverUrl + "/regimen-matrimonial/"+jsondatos._id)
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err))
-
-        this.setState({
-            datos: this.state.datos.filter(el => el._id !== jsondatos._id)
-        });
-
-        window.paginar('list-group','list-group-item',true);
-    }
-    deleteData = async (jsondatos) => {
         this.setState({
             modalOpen: true,
             modalAction: 'delete',

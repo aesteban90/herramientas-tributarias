@@ -18,6 +18,8 @@ export default class BancosForm extends Component{
     //Metodo que obtiene cualquier actualizacion de otros componentes donde fue llamado
     componentDidUpdate(){               
         if(this.state.idUpdate !== this.props.idUpdate ){
+            //Enfocar el input
+            this._input.focus(); 
             this.setState({ idUpdate: this.props.idUpdate});
             if(this.props.idUpdate !== "NEW" && this.props.idUpdate !== "" ){
                 axios.get(configData.serverUrl + "/bancos/"+this.props.idUpdate)
@@ -30,6 +32,8 @@ export default class BancosForm extends Component{
                 })
                 .catch(err => console.log(err));
             }else{
+                //Enfocar el input
+                this._input.focus(); 
                 this.setState({
                     descripcion:'',
                     user_created: UserLogueado.nick,
