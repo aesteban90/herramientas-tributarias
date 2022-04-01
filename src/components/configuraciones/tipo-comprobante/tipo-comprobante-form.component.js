@@ -22,6 +22,8 @@ export default class TipoComprobanteForm extends Component{
     //Metodo que obtiene cualquier actualizacion de otros componentes donde fue llamado
     componentDidUpdate(){        
         if(this.state.idUpdate !== this.props.idUpdate ){
+            //Enfocar el input
+            this._input.focus(); 
             this.setState({ idUpdate: this.props.idUpdate});
             if(this.props.idUpdate !== "NEW" && this.props.idUpdate !== "" ){
                 axios.get(configData.serverUrl + "/tipo-comprobante/"+this.props.idUpdate)
@@ -36,6 +38,8 @@ export default class TipoComprobanteForm extends Component{
                 })
                 .catch(err => console.log(err));
             }else{
+                //Enfocar el input
+                this._input.focus(); 
                 this.setState({
                     tipo:'',
                     codigo:'',
@@ -144,6 +148,17 @@ export default class TipoComprobanteForm extends Component{
                 <form onSubmit={this.onSubtmit}>
                         <div className="row">
                             <div className="form-group col-md-6">
+                                <label>Codigo: </label>
+                                <input type="text" 
+                                    required
+                                    autoFocus={true}
+                                    ref={c => (this._input = c)}
+                                    className="form-control"
+                                    value={this.state.codigo}
+                                    onChange={this.onChangeCodigo}
+                                />
+                            </div>  
+                            <div className="form-group col-md-6">
                                 <label>Tipo: </label>
                                 <Select 
                                     noOptionsMessage={() => 'Sin resultados'}
@@ -151,16 +166,7 @@ export default class TipoComprobanteForm extends Component{
                                     options={this.state.tipoComprobanteOptions} 
                                     onChange={this.onChangeTipoComprobantesOptions}                                    
                                     required/>
-                            </div> 
-                            <div className="form-group col-md-6">
-                                <label>Codigo: </label>
-                                <input type="text" 
-                                    required
-                                    className="form-control"
-                                    value={this.state.codigo}
-                                    onChange={this.onChangeCodigo}
-                                />
-                            </div>                            
+                            </div>                                                       
                             <div className="form-group col-md-12">
                                 <label>Descripcion: </label>
                                 <input type="text" 

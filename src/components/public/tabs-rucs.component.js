@@ -53,11 +53,11 @@ export default class RucsList extends Component{
     render(){       
         return(
             <div className="container">
-                <Tabs transition={false} defaultActiveKey="rucs-mios" className="mb-3 col">
+                <Tabs transition={false} defaultActiveKey="rucs-mios" className="mb-3 col-12">
                     <Tab eventKey="rucs-mios" title="Mis Rucs">
                         <MisRucs />
                     </Tab>
-                    <Tab eventKey="otro-rucs" title="Rucs de Otros">
+                    <Tab eventKey="otro-rucs" title="Otros Rucs">
                         <OtrosRucs />
                     </Tab>
                 </Tabs>

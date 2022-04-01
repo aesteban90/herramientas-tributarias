@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faEdit, faTrash, faBookmark } from '@fortawesome/free-solid-svg-icons'
 import Rucs from './rucs-form.component';
 import TimbradosList from '../timbados/timbrado-list.component';
 import { UserLogueado } from '../../../App';
@@ -117,14 +119,27 @@ export default class RucsList extends Component{
 
     datalist(){
         return this.state.datos.map((dato,index) => {
-            return (<li className="list-group-item" key={index}>                   
-                    <div className="col-md-4">{dato.ruc +"-"+dato.div+" "+dato.razonSocial}</div>
-                    <div className="col-md-5">{dato.tipoEgreso.descripcion}</div>
-                    <div className="col-md-3 text-right">
-                        <button onClick={() => this.updateData(dato)} type="button" className="btn btn-light btn-sm mr-1">Editar</button>
-                        <button onClick={() => this.deleteData(dato)} type="button" className="btn btn-danger btn-sm">Eliminar</button>
-                        <br/><br/><button onClick={() => this.onChangeFormTimbrado(dato)} type="button" className="btn btn-light btn-sm mr-1">Timbrados</button>
-                    </div>
+            return (<li className="list-group-item" key={index}>       
+                    <div className="row col-12 datos-table-desktop">
+                        <div className="col-md-4">{dato.ruc +"-"+dato.div+" "+dato.razonSocial}</div>
+                        <div className="col-md-5">{dato.tipoEgreso.descripcion}</div>
+                        <div className="col-md-3 text-right">
+                            <button onClick={() => this.updateData(dato)} type="button" className="btn btn-light btn-sm mr-1"><FontAwesomeIcon icon={faEdit} /> Editar</button>
+                            <button onClick={() => this.onChangeFormTimbrado(dato)} type="button" className="btn btn-light btn-sm mr-1"><FontAwesomeIcon icon={faBookmark} /> Timbrados</button>
+                            <button onClick={() => this.deleteData(dato)} type="button" className="btn btn-danger btn-sm mt-2"><FontAwesomeIcon icon={faTrash} /> Eliminar</button>                            
+                        </div>
+                    </div>    
+                    <div className="row col-12 datos-table-mobile">
+                        <div className="col-12"><b>Razon: </b>{dato.ruc +"-"+dato.div+" "+dato.razonSocial}</div>    
+                        <div className="col-12"><b>Tipo Egreso: </b>{dato.tipoEgreso.descripcion}</div>    
+                        <div className="row">
+                            <div className="text-left col-12 pl-1">
+                                <button onClick={() => this.updateData(dato)} type="button" className="btn btn-light btn-sm mt-1 mr-1"><FontAwesomeIcon icon={faEdit} /> Editar</button>
+                                <button onClick={() => this.onChangeFormTimbrado(dato)} type="button" className="btn btn-light btn-sm mt-1 mr-1"><FontAwesomeIcon icon={faBookmark} /> Timbrados</button>
+                                <button onClick={() => this.deleteData(dato)} type="button" className="btn btn-danger btn-sm mt-1"><FontAwesomeIcon icon={faTrash} /> Eliminar</button>                                
+                            </div>
+                        </div>
+                    </div>        
                 </li>)
         })
     }
@@ -138,13 +153,21 @@ export default class RucsList extends Component{
                 <div className="row">
                     <div className="col-md-8">
                         <div className="card">
-                            <div className="card-header">
+                            <div className="card-header title-table-desktop">
                                 <div className="card-title row mb-0">  
                                     <div className="col-md-4">Ruc - Razon Social</div>
                                     <div className="col-md-4">Tipo Egreso Predeterminado</div>   
                                     <div className="col-md-4 text-right">
-                                        <button onClick={() => this.createData("NEW")} type="button" className="btn btn-success btn-sm">Nuevo</button>
+                                        <button onClick={() => this.createData("NEW")} type="button" className="btn btn-success btn-sm"><FontAwesomeIcon icon={faPlus} /> Agregar Ruc</button>
                                     </div>                                 
+                                </div>
+                            </div>
+                            <div className="card-header title-table-mobile">
+                                <div className="card-title row mb-0"> 
+                                    <div className="col-5">Resumen</div>
+                                    <div className="col-7 text-right btn-createform-mobile">
+                                        <button onClick={() => this.createData("New")} type="button" className="btn btn-success btn-sm"><FontAwesomeIcon icon={faPlus} /> Agregar Ruc</button>
+                                    </div>  
                                 </div>
                             </div>
                             <input id="input-search" className="form-control input-search" type="search" placeholder="Busqueda (minimo 3 letras)..." />

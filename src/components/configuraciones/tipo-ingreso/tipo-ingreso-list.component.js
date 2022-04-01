@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import Modal from '../../modals/modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 import TipoIngreso from './tipo-ingreso-form.component';
 const configData = require('../../../config.json');
 
@@ -9,7 +12,12 @@ export default class TipoIngresoList extends Component{
         this.state = {
             datos: [],
             idUpdate: '',
-            didUpdate: true
+            didUpdate: true,
+            modalOpen:false,
+            modalAction: '',
+            modalID: '',
+            modalTitle: '',
+            modalBody:''
         }
         this.datalist = this.datalist.bind(this);
     }
@@ -35,17 +43,28 @@ export default class TipoIngresoList extends Component{
     componentDidUpdate(){}
 
     deleteData = async (jsondatos) => {
-        await axios.delete(configData.serverUrl + "/tipo-ingreso/"+jsondatos._id)
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err))
-
         this.setState({
-            datos: this.state.datos.filter(el => el._id !== jsondatos._id)
-        });
+            modalOpen: true,
+            modalAction: 'delete',
+            modalID: jsondatos._id,
+            modalTitle: 'Esta seguro de eliminar el Tipo de Ingreso?',
+            modalBody: 'Código: '+jsondatos.codigo+'\nDescripción: '+jsondatos.descripcion 
+        })
+    }    
+    actionConfirmModal = () =>{
+        if(this.state.modalAction === "delete"){
+            axios.delete(configData.serverUrl + "/tipo-ingreso/" + this.state.modalID)
+                .then(res => console.log(res.data))
+                .catch(err => console.log(err))
 
-        window.paginar('list-group','list-group-item',true);
+            this.setState({
+                datos: this.state.datos.filter(el => el._id !== this.state.modalID),
+                modalOpen: false,
+            });
+        }
     }
-
+    setOpenModal = () =>{this.setState({modalOpen: !this.state.modalOpen})}
+    
     updateData = (jsondatos) => {
         this.setState({
             idUpdate: jsondatos._id
@@ -61,11 +80,23 @@ export default class TipoIngresoList extends Component{
     datalist(){
         return this.state.datos.map(dato => {
             return (<li className="list-group-item" key={dato._id}>
-                    <div className="col-md-2">{dato.codigo}</div>
-                    <div className="col-md-8">{dato.descripcion}</div>
-                    <div className="col-md-2 text-right">
-                        <button onClick={() => this.updateData(dato)} type="button" className="btn btn-light btn-sm mr-1">Editar</button>
-                        <button onClick={() => this.deleteData(dato)} type="button" className="btn btn-danger btn-sm">Eliminar</button>
+                    <div className="datos-table-desktop">
+                        <div className="col-md-2">{dato.codigo}</div>
+                        <div className="col-md-8">{dato.descripcion}</div>
+                        <div className="col-md-2 text-right">
+                            <button onClick={() => this.updateData(dato)} type="button" className="btn btn-light btn-sm mr-1"><FontAwesomeIcon icon={faEdit}/> Editar</button>
+                            <button onClick={() => this.deleteData(dato)} type="button" className="btn btn-danger btn-sm"><FontAwesomeIcon icon={faTrash}/> Eliminar</button>
+                        </div>
+                    </div>
+                    <div className="datos-table-mobile">
+                        <div className="col-md-12"><b>Codigo: </b>{dato.codigo}</div>
+                        <div className="col-md-12"><b>Descripcion: </b>{dato.descripcion}</div>
+                        <div className="row col-sm-12">
+                            <div className="text-left col-12 pl-1">
+                                <button onClick={() => this.updateData(dato)} type="button" className="btn btn-light btn-sm mr-1"><FontAwesomeIcon icon={faEdit}/> Editar</button>
+                                <button onClick={() => this.deleteData(dato)} type="button" className="btn btn-danger btn-sm"><FontAwesomeIcon icon={faTrash}/> Eliminar</button>
+                            </div>
+                        </div>
                     </div>
                 </li>)
         })
@@ -73,19 +104,28 @@ export default class TipoIngresoList extends Component{
     render(){       
         return(
             <div className="container">
+                {this.state.modalOpen && <Modal setOpenModal={this.setOpenModal} title={this.state.modalTitle} body={this.state.modalBody} actionConfirmModal={this.actionConfirmModal} actionString={this.state.modalAction} />}
                 <div className="row mb-0 col-md-12">
                     <h3>Lista de Tipos de Ingresos</h3>
                 </div>
                 <div className="row">
                     <div className="col-md-8">
                         <div className="card">
-                            <div className="card-header">
+                            <div className="card-header title-table-desktop">
                                 <div className="card-title row mb-0">  
                                     <div className="col-md-2">Codigo</div>
                                     <div className="col-md-8">Descripcion</div>   
                                     <div className="col-md-2 text-right">
-                                        <button onClick={() => this.createData("NEW")} type="button" className="btn btn-success btn-sm">Nuevo</button>
+                                        <button onClick={() => this.createData("NEW")} type="button" className="btn btn-success btn-sm"><FontAwesomeIcon icon={faPlus}/> Nuevo</button>
                                     </div>                                 
+                                </div>
+                            </div>
+                            <div className="card-header title-table-mobile">
+                                <div className="card-title row mb-0"> 
+                                    <div className="col-5">Resumen</div>
+                                    <div className="col-7 text-right btn-createform-mobile">
+                                        <button onClick={() => this.createData("NEW")} type="button" className="btn btn-success btn-sm"><FontAwesomeIcon icon={faPlus}/> Nuevo</button>
+                                    </div>  
                                 </div>
                             </div>
                             <input className="form-control input-search" type="search" placeholder="Busqueda (minimo 3 letras)..." />

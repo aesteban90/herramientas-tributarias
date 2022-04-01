@@ -25,6 +25,8 @@ export default class RucsForm extends Component{
     //Metodo que obtiene cualquier actualizacion de otros componentes donde fue llamado
     componentDidUpdate(){        
         if(this.state.idUpdate !== this.props.idUpdate ){
+            //Enfocar el input
+            this._input.focus(); 
             this.setState({ idUpdate: this.props.idUpdate});
             if(this.props.idUpdate !== "NEW" && this.props.idUpdate !== "" ){
                 axios.get(configData.serverUrl + "/rucs/"+this.props.idUpdate)
@@ -42,6 +44,8 @@ export default class RucsForm extends Component{
                 })
                 .catch(err => console.log(err));
             }else{
+                //Enfocar el input
+                this._input.focus(); 
                 this.setState({
                     tipoEgresosSelected: this.state.tipoEgresosOptions[0],
                     ruc:'',

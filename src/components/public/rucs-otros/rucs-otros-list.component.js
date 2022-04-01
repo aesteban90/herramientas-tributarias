@@ -79,31 +79,39 @@ export default class RucsOtrosList extends Component{
     datalist(){
         return this.state.datos.map((dato,index) => {
             return (<li className="list-group-item" key={"otros-"+index}>                   
-                    <div className="col-md-4">{dato.ruc +"-"+dato.div+" "+dato.razonSocial}</div>
-                    <div className="col-md-5">{dato.tipoEgreso.descripcion}</div>
-                    <div className="col-md-3 text-right">
-                        <button onClick={() => this.onChangeFormTimbrado(dato)} type="button" className="btn btn-light btn-sm mr-1">Timbrados</button>
+                    <div className="row col-12 datos-table-desktop">
+                        <div className="col-md-4">{dato.ruc +"-"+dato.div+" "+dato.razonSocial}</div>
+                        <div className="col-md-5">{dato.tipoEgreso.descripcion}</div>                        
                     </div>
+                    <div className="row col-12 datos-table-mobile">
+                        <div className="col-12"><b>Razon: </b>{dato.ruc +"-"+dato.div+" "+dato.razonSocial}</div>    
+                        <div className="col-12"><b>Tipo Egreso: </b>{dato.tipoEgreso.descripcion}</div>
+                    </div> 
                 </li>)
         })
     }
     render(){       
         return(
-            <div className="container">
+            <div className="ml1">
                 <div className="row mb-0 col-md-8">
                     <div className="col-md-6">
-                        <h3>Rucs de Otros</h3>
+                        <h3>Otros Rucs</h3>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-md-8">
                         <div className="card">
-                            <div className="card-header">
+                            <div className="card-header title-table-desktop">
                                 <div className="card-title row mb-0">  
                                     <div className="col-md-4">Ruc - Razon Social</div>
                                     <div className="col-md-4">Tipo Egreso Predeterminado</div>   
                                     <div className="col-md-4 text-right">
                                     </div>                                 
+                                </div>
+                            </div>
+                            <div className="card-header title-table-mobile">
+                                <div className="card-title row mb-0"> 
+                                    <div className="col-5">Resumen</div>                                    
                                 </div>
                             </div>
                             <input className="input-search form-control" type="search" placeholder="Busqueda (minimo 3 letras)..." />

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faEdit, faTrash, faBookmark, faCalendarCheck } from '@fortawesome/free-solid-svg-icons'
 import Informante from './informante-form.component';
 import PeriodoList from '../../public/periodos/periodo-list.component';
 import TimbradosList from '../../public/timbados/timbrado-list.component';
@@ -153,21 +155,23 @@ export default class InformanteList extends Component{
                         <div className="col-md-3">{dato.ruc.ruc +"-"+dato.ruc.div + periodo}</div>
                         <div className="col-md-4">{dato.ruc.razonSocial}</div>
                         <div className="col-md-3 text-right">
-                            <button onClick={() => this.updateData(dato)} type="button" className="btn btn-light btn-sm mr-1">Editar</button>
-                            <button onClick={() => this.deleteData(dato)} type="button" className="btn btn-danger btn-sm">Eliminar</button>
+                            <button onClick={() => this.updateData(dato)} type="button" className="btn btn-light btn-sm mr-1"><FontAwesomeIcon icon={faEdit} /> Editar</button>
+                            <button onClick={() => this.deleteData(dato)} type="button" className="btn btn-danger btn-sm"><FontAwesomeIcon icon={faTrash} /> Eliminar</button>
                             <br/><br/>
-                            <button onClick={() => this.onChangeFormPeriodo(dato)} type="button" className="btn btn-light btn-sm mr-1">Periodos</button>
-                            <button onClick={() => this.onChangeFormTimbrado(dato)} type="button" className="btn btn-light btn-sm">Timbrados</button>
+                            <button onClick={() => this.onChangeFormPeriodo(dato)} type="button" className="btn btn-light btn-sm mr-1"><FontAwesomeIcon icon={faCalendarCheck} /> Periodos</button>
+                            <button onClick={() => this.onChangeFormTimbrado(dato)} type="button" className="btn btn-light btn-sm"><FontAwesomeIcon icon={faBookmark} /> Timbrados</button>
                         </div>
                     </div>
                     <div className="datos-table-mobile">
                         <div className="col-md-12"><b>Ruc: </b>{dato.ruc.ruc +"-"+dato.ruc.div + periodo}</div>
                         <div className="col-md-12"><b>Razon: </b>{dato.ruc.razonSocial}</div>
                         <div className="row col-sm-12">
-                            <button onClick={() => this.updateData(dato)} type="button" className="btn btn-light btn-sm mr-1 mb-1">Editar</button>
-                            <button onClick={() => this.deleteData(dato)} type="button" className="btn btn-danger btn-sm mb-1">Eliminar</button>
-                            <button onClick={() => this.onChangeFormPeriodo(dato)} type="button" className="btn btn-light btn-sm mr-1 mb-1">Periodos</button>
-                            <button onClick={() => this.onChangeFormTimbrado(dato)} type="button" className="btn btn-light btn-sm">Timbrados</button>
+                            <div className="text-left col-12 pl-1">
+                                <button onClick={() => this.updateData(dato)} type="button" className="btn btn-light btn-sm mr-1 mb-1"><FontAwesomeIcon icon={faEdit} /> Editar</button>
+                                <button onClick={() => this.onChangeFormPeriodo(dato)} type="button" className="btn btn-light btn-sm mr-1 mb-1"><FontAwesomeIcon icon={faCalendarCheck} /> Periodos</button>
+                                <button onClick={() => this.onChangeFormTimbrado(dato)} type="button" className="btn btn-light btn-sm"><FontAwesomeIcon icon={faBookmark} /> Timbrados</button>
+                                <button onClick={() => this.deleteData(dato)} type="button" className="btn btn-danger btn-sm mb-1"><FontAwesomeIcon icon={faTrash} /> Eliminar</button>
+                            </div>
                         </div>
                     </div>
                 </li>)
@@ -190,7 +194,7 @@ export default class InformanteList extends Component{
                                     <div className="col-md-3">Ruc | Periodo</div>
                                     <div className="col-md-5">Razon Social</div>   
                                     <div className="col-md-2 text-right">
-                                        <button onClick={() => this.createData("NEW")} type="button" className="btn btn-success btn-sm">Nuevo</button>
+                                        <button onClick={() => this.createData("NEW")} type="button" className="btn btn-success btn-sm"><FontAwesomeIcon icon={faPlus} /> Agregar Informante</button>
                                     </div>                                 
                                 </div>
                             </div>
@@ -198,7 +202,7 @@ export default class InformanteList extends Component{
                                 <div className="card-title row mb-0"> 
                                     <div className="col-5">Resumen</div>
                                     <div className="col-7 text-right btn-createform-mobile">
-                                    <button onClick={() => this.createData("NEW")} type="button" className="btn btn-success btn-sm">Nuevo</button>
+                                    <button onClick={() => this.createData("NEW")} type="button" className="btn btn-success btn-sm"><FontAwesomeIcon icon={faPlus} /> Agregar Informante</button>
                                     </div>  
                                 </div>
                             </div>

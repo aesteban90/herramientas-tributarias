@@ -10,6 +10,7 @@ export default class UserCreate extends Component{
     constructor(props){
         super(props);
         this.state = {
+            email:'',
             nickname:'',
             nombre_completo:'',
             password:'',
@@ -36,30 +37,12 @@ export default class UserCreate extends Component{
             .catch(err => console.log(err));                  
     }
 
-    buttonActivated = () => {
-        window.location.href = "/usuarios";
-    }
-
-    onChangeNickname = (e) => {
-        this.setState({
-            nickname: e.target.value
-        })
-    }
-    onChangeNombreCompleto = (e) => {
-        this.setState({
-            nombre_completo: e.target.value
-        })
-    }
-    onChangePassword = (e) => {
-        this.setState({
-            password: e.target.value
-        })
-    }
-    onChangeExpira = (date) => {
-        this.setState({
-            expira: date
-        })
-    }
+    buttonActivated = () => {window.location.href = "/usuarios";}
+    onChangeNickname = (e) => {this.setState({nickname: e.target.value})}
+    onChangeEmail = (e) => {this.setState({email: e.target.value})}
+    onChangeNombreCompleto = (e) => {this.setState({nombre_completo: e.target.value})}
+    onChangePassword = (e) => {this.setState({password: e.target.value})}
+    onChangeExpira = (date) => {this.setState({expira: date})}
 
     showNotification(isSuccess){
         document.querySelector('#alert').classList.replace('hide','show');
@@ -90,6 +73,7 @@ export default class UserCreate extends Component{
         document.querySelectorAll("[type='checkbox']:checked").forEach((item) => {rolesSelected.push(item.value)})
         
         const user = {
+            email: this.state.email,
             nickname: this.state.nickname,
             nombre_completo: this.state.nombre_completo,
             password: this.state.password,
@@ -124,6 +108,15 @@ export default class UserCreate extends Component{
                 <form onSubmit={this.onSubtmit}>
                     <div className="row col-md-12">
                         <div className="col-md-5">
+                            <div className="form-group">
+                                <label>Email: </label>
+                                <input type="text" 
+                                    required
+                                    className="form-control"
+                                    value={this.state.email}
+                                    onChange={this.onChangeEmail}
+                                />
+                            </div>
                             <div className="form-group">
                                 <label>Nickname: </label>
                                 <input type="text" 
