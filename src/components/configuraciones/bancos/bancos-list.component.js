@@ -39,18 +39,6 @@ export default class BancosList extends Component{
         this.updateList('');
     }
     componentDidUpdate(){}
-/*
-    deleteData = async (jsondatos) => {
-        await axios.delete(configData.serverUrl + "/bancos/"+jsondatos._id)
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err))
-
-        this.setState({
-            datos: this.state.datos.filter(el => el._id !== jsondatos._id)
-        });
-
-        window.paginar('list-group','list-group-item',true);
-    }*/
     deleteData = async (jsondatos) => {
         this.setState({
             modalOpen: true,
