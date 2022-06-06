@@ -47,7 +47,7 @@ export default function App() {
   const tokenReg = getUrlParameter('tokenReg');
 
   if(theme === "dark"){
-    require('./css/themeDark.css');
+    //require('./css/themeDark.css');
   }
   
   if (!token) {

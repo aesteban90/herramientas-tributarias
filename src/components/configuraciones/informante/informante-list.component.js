@@ -36,7 +36,7 @@ export default class InformanteList extends Component{
             .catch(err => console.log(err))       
     }
     
-    componentDidMount(){        
+    componentDidMount(){
         axios.get(configData.serverUrl + "/users/informante/"+UserLogueado.id)
             .then(response => {this.setState({user: response.data});this.updateList('true');})
             .catch(err => console.log(err))        
@@ -178,7 +178,7 @@ export default class InformanteList extends Component{
         })
     }
     render(){       
-        
+        require('../../../css/htmltest.css');
         return(
             <div className="container">
                 {this.state.modalOpen && <Modal setOpenModal={this.setOpenModal} title={this.state.modalTitle} body={this.state.modalBody} actionConfirmModal={this.actionConfirmModal} actionString={this.state.modalAction}/>}

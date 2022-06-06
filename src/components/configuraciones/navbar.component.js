@@ -1,7 +1,7 @@
 import React, {useState, useRef }  from 'react';
 import {CSSTransition} from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCog, faChevronRight, faChevronLeft, faUsersCog, faCopy, faSignOutAlt, faUser, faFileAlt, faUserTag, faDownload } from '@fortawesome/free-solid-svg-icons'
+import { faFileInvoiceDollar, faCog, faChevronRight, faChevronLeft, faUsersCog, faCopy, faSignOutAlt, faUser, faFileAlt, faUserTag, faDownload } from '@fortawesome/free-solid-svg-icons'
 import useOutsideClick from "../../useOutsideClick";
 import useToken from './useToken.js';
 import logout from '../public/registration/logout';
@@ -74,6 +74,12 @@ function DropdownMenu(){
                         {username}
                     </DropdownItem>
                     <div className="dropdown-divider"></div>
+                    <DropdownItem href="/">
+                        <span className="icon-button">
+                            <FontAwesomeIcon icon={faFileInvoiceDollar} />
+                        </span>
+                        Cargar Ingreso/Egreso
+                    </DropdownItem>
                     <DropdownItem href="/informante">
                         <span className="icon-button">
                             <FontAwesomeIcon icon={faUserTag} />

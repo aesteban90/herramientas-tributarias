@@ -103,9 +103,11 @@ function ExportData(props){
     })
 
     if (csvReport.data !== undefined && csvReport.data.length > 0){
+        console.log(csvReport.data);
         return (
             <div>
                 <CsvDownloader 
+                    separator='  '
                     id="exportDataExcel"
                     filename={csvReport.filename}  
                     extension={csvReport.extension} 

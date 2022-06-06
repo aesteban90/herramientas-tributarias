@@ -192,6 +192,12 @@ export default class FormularioIngreso extends Component{
     
     onChangeTipoingresoOptions = (selectedOption) => {
         this.setState({tipoIngresoSelected: selectedOption}, () => this.calcularRentaNeta());
+        if(selectedOption.label.indexOf("0")>-1){
+            document.querySelector("#check_irp").checked = false;
+            document.querySelector("#check_ire").checked = false;
+            document.querySelector("#gravado_irp").setAttribute('class', 'd-none');
+            document.querySelector("#gravado_ire").setAttribute('class', 'd-none');
+        }
         if(selectedOption.label.indexOf("501")>-1){
             document.querySelector('#monto_venta').setAttribute('class', 'form-group col-md-2');
             document.querySelector('#total_comprobante').setAttribute('class', 'form-group col-md-2');
@@ -479,8 +485,8 @@ export default class FormularioIngreso extends Component{
                             <div id="div-numero-comprobante" className="form-group col-md-2" >
                                 <label>Numero Comprobante: </label><br/>
                                 <NumberFormat 
-                                    thousandSeparator = "."
-                                    decimalSeparator = ""
+                                    format="###-###-#######"
+                                    mask="_"
                                     className="form-control"
                                     value={this.state.comprobanteNumero}
                                     onChange={this.onChangeComprobanteNumero}                                    
